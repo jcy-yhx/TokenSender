@@ -4,24 +4,42 @@ export interface InputFormProps {
     value?: string
     type?: string
     large?: boolean
+    className?: string // 增加 className 支持自定义样式
     onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
 }
 
-export default function InputForm({ label, placeholder, value, type, large, onChange }: InputFormProps) {
+export default function InputForm({ label, placeholder, value, type, large, onChange, className }: InputFormProps) {
+    // 提取公共样式，确保 input 和 textarea 视觉统一
+    const baseStyles = `
+        w-full bg-white 
+        py-2.5 px-3.5 
+        border border-gray-300 
+        rounded-xl shadow-sm
+        placeholder:text-gray-400 
+        text-gray-900 
+        transition-all duration-200
+        hover:border-gray-400 
+        focus:ring-[4px] focus:ring-indigo-500/10 focus:border-indigo-500 
+        focus:outline-none
+    `;
+
     return (
-        <div className="flex flex-col gap-1.5">
-            <label className="text-zinc-600 font-medium text-sm">{label}</label>
-            {large ? ( // 根据传入的 large 属性决定使用 textarea 还是 input
+        <div className={`flex flex-col gap-2 ${className}`}>
+            <label className="text-gray-700 font-semibold text-sm ml-1">
+                {label}
+            </label>
+            
+            {large ? (
                 <textarea
-                    className={`bg-white py-2 px-3 border border-zinc-300 placeholder:text-zinc-500 text-zinc-900 shadow-xs rounded-lg focus:ring-[4px] focus:ring-zinc-400/15 focus:outline-none h-24 align-text-top`}
+                    className={`${baseStyles} h-32 resize-y min-h-[100px] align-text-top`}
                     placeholder={placeholder}
                     value={value || ''}
                     onChange={onChange}
                 />
             ) : (
                 <input
-                    className={`bg-white py-2 px-3 border border-zinc-300 placeholder:text-zinc-500 text-zinc-900 shadow-xs rounded-lg focus:ring-[4px] focus:ring-zinc-400/15 focus:outline-none`}
-                    type={type}
+                    className={baseStyles}
+                    type={type || 'text'}
                     placeholder={placeholder}
                     value={value || ''}
                     onChange={onChange}
