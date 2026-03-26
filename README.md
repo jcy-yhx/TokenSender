@@ -1,5 +1,7 @@
 # 🚀 Tsender - Multi-Chain Token Airdrop Tool
-https://token-sender-cyan.vercel.app/
+
+🌐 **Live Demo:** [token-sender-cyan.vercel.app](https://token-sender-cyan.vercel.app)
+
 [English](#english) | [中文](#中文)
 
 ---
