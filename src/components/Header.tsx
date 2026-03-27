@@ -13,7 +13,7 @@ export default function Header() {
             </h1>
 
             <a
-                href="https://github.com/你的用户名/tsender"
+                href="https://github.com/jcy-yhx/TokenSender"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-500 transition-colors hover:text-gray-900"
